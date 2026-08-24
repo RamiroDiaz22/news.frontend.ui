@@ -1,32 +1,81 @@
-# React + TypeScript + Vite
+# 📰 Diario Digital - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Este es el repositorio del frontend para **Diario Digital**, una plataforma web para la visualización y gestión de noticias. El proyecto está construido bajo un enfoque **Mobile-First** utilizando una arquitectura escalable por capas y herramientas modernas del ecosistema React.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Vite** (Bundler y Dev Server ultrarrápido)
+- **React Router 7** (Enrutamiento con soporte para Lazy Loading)
+- **Zustand** (Gestor de estado global / Client State)
+- **TanStack Query (React Query)** (Manejo de Server State y Data Fetching)
+- **Ant Design (antd)** (Librería de Componentes y Formularios)
+- **Lucide React** (Iconografía limpia y ligera)
+- **Axios** (Cliente HTTP con interceptores)
+- **Day.js** (Manipulación de fechas)
 
-## React Compiler
+## 📁 Estructura del Proyecto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El proyecto sigue una estructura modular orientada a funcionalidades y reusabilidad:
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```text
+src/
+├── assets/        # Imágenes, fuentes estáticas y multimedia
+├── components/    # Componentes UI reutilizables (Botones, Tarjetas, Modales)
+├── constants/     # Variables globales, configuraciones y Enums (sufijo _ENUM)
+├── hooks/         # Custom Hooks de React (ej. consumo de API)
+├── layouts/       # Componentes estructurales envolventes (PublicLayout, AdminLayout)
+├── pages/         # Vistas de nivel de ruta (Home, Login, Dashboard)
+├── routes/        # Definición del router centralizado
+├── services/      # Lógica de conexión a APIs y configuración de Axios
+├── stores/        # Stores de estado global (Zustand)
+├── types/         # Interfaces y tipos globales de TypeScript
+└── utils/         # Helpers y funciones matemáticas/formateo
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 🛠️ Requisitos Previos
+
+- **Node.js**: v24+ (LTS recomendado)
+- **Gestor de paquetes**: [pnpm](https://pnpm.io/) (v11+)
+
+## 💻 Instalación y Uso
+
+1. **Instalar las dependencias:**
+   ```bash
+   pnpm install
+   ```
+
+2. **Levantar el servidor de desarrollo:**
+   ```bash
+   pnpm dev
+   ```
+   La aplicación estará disponible por defecto en `http://localhost:5173`.
+
+3. **Construir para producción (Build):**
+   ```bash
+   pnpm build
+   ```
+
+4. **Verificar la calidad del código (Linter y Tipos):**
+   ```bash
+   pnpm lint
+   pnpm tsc --noEmit
+   ```
+
+## 📜 Reglas y Convenciones de Código
+
+- **Idioma:** Todo el código fuente (variables, funciones, componentes) y comentarios deben estar estrictamente en **Inglés**.
+- **Tipado:** Tipado estático obligatorio. El uso de `any` está prohibido y bloqueado por el linter.
+- **Calidad:** El proyecto utiliza **ESLint** (con el preset `@antfu/eslint-config`) y **Prettier**.
+- **Nomenclatura:**
+  - Variables y Funciones: `camelCase`
+  - Componentes y Layouts: `PascalCase`
+  - Constantes Globales y Enums: `UPPER_CASE` (Ej. `STATUS_ENUM`)
+
+## 🗺️ Arquitectura de Enrutamiento
+
+La aplicación está seccionada en tres grandes áreas utilizando Layouts para envolver el contenido:
+
+1. **Rutas Públicas (`/`)**: Envueltas en `PublicLayout`. Contienen el feed principal y el detalle de cada noticia.
+2. **Rutas de Autenticación (`/login`)**: Envueltas en `AuthLayout`. Vista dividida (Split-screen) para el acceso de administradores.
+3. **Rutas de Administración (`/admin/*`)**: Envueltas en `AdminLayout` (Sidebar + Topbar). Todas las rutas dentro de este módulo usan **Lazy Loading** (`React.lazy()`) para no afectar el tiempo de carga (FCP) de las rutas públicas.
