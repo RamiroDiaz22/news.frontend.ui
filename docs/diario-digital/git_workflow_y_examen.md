@@ -1,0 +1,51 @@
+# 🌿 Guía de Git y Examen Teórico
+
+Para trabajar en Diario Digital, no solo necesitas saber escribir código, sino saber **cómo compartirlo** con el equipo de forma ordenada. Utilizamos un flujo de trabajo simplificado basado en *Git Flow*.
+
+## 📘 Teoría Básica: Comandos del día a día
+
+- `git pull`: Trae y fusiona los últimos cambios desde el repositorio remoto hacia tu rama actual. **Regla de oro:** Siempre haz un `git pull` de la rama principal (`master`/`main`) antes de empezar a trabajar en algo nuevo para evitar conflictos.
+- `git checkout -b <nombre-rama>`: Crea una nueva rama y te mueve hacia ella automáticamente.
+- `git add .`: Prepara todos los archivos modificados para ser "guardados" en tu próximo commit (los pasa al *Staging Area*).
+- `git commit -m "mensaje"`: Guarda los cambios preparados en el historial de tu rama local, junto con un mensaje explicativo.
+- `git stash`: Guarda temporalmente tus cambios no confirmados (útil si necesitas cambiar de rama de urgencia sin hacer commit) y deja tu área de trabajo limpia. Con `git stash pop` puedes recuperar esos cambios.
+
+## 🔀 Convención de Ramas (Branches)
+
+Nunca trabajamos directamente en `master` o `main`. Siempre debes crear una rama nueva utilizando uno de estos prefijos:
+
+- `feature/nombre-funcionalidad`: Para crear algo nuevo (Ej: `feature/news-card`, `feature/login-page`).
+- `bugfix/nombre-error`: Para arreglar un problema en entorno de desarrollo (Ej: `bugfix/alineacion-header`).
+- `hotfix/nombre-error`: Para arreglar un problema urgente crítico que ya está en producción.
+
+## 📝 Convención de Commits (Conventional Commits)
+
+Nuestros mensajes de commit deben seguir un estándar para que el historial del proyecto sea fácil de leer por cualquier persona. Deben empezar con un sustantivo/verbo en minúscula seguido de dos puntos:
+
+- `feat:` -> Cuando añades una nueva funcionalidad (Ej: `feat: add news card component`).
+- `fix:` -> Cuando corriges un error o bug (Ej: `fix: resolve crash on login screen`).
+- `docs:` -> Cambios exclusivos en la documentación (Ej: `docs: update readme`).
+- `style:` -> Cambios de formato (espacios, punto y coma) que no afectan la lógica.
+- `refactor:` -> Reescribir código sin añadir funcionalidad ni arreglar bugs.
+
+---
+
+## 🎓 Examen Teórico (¡Ponte a prueba!)
+
+Antes de hacer tu primer cambio en el código, lee las siguientes situaciones y piensa qué comandos o nombres utilizarías. ¡No busques la solución en Google de inmediato, trata de razonarlo! Puedes pedirle a tu Mentor Técnico o al IA Mentor que valide tus respuestas.
+
+**Situación 1:**
+Te han asignado la tarea de crear la nueva página de "Contacto". Estás situado en la rama `master` limpia. 
+*Pregunta:* ¿Cuál debería ser el nombre exacto de la rama que debes crear y qué comando usarías para crearla y moverte a ella?
+
+**Situación 2:**
+Estás a la mitad de tu trabajo creando el botón de Login (tienes archivos modificados, pero el código está roto). De pronto, tu líder técnico te pide que te muevas urgente a la rama `master` para revisar una configuración. No quieres hacer un "commit de código roto".
+*Pregunta:* ¿Qué comando te salvaría la vida para guardar tus cambios en un "cajón temporal" y dejar tu rama limpia para poder moverte a master sin perder tu trabajo?
+
+**Situación 3:**
+Ya terminaste la página de Contacto, probaste todo y funciona. Has agregado los cambios con `git add .`. Ahora necesitas guardarlos en el historial del repositorio de forma definitiva.
+*Pregunta:* ¿Cuál sería un mensaje de commit válido y correcto (siguiendo nuestra convención) para este caso? Escribe el comando completo.
+
+**Situación 4:**
+Descubres que en la página de Noticias, un título está desbordando la pantalla y rompiendo el diseño en móviles. Te asignan arreglarlo.
+*Pregunta:* ¿Qué tipo de rama (prefijo) debiste haber creado para esta tarea en particular y qué prefijo de commit usarías al guardar la solución?

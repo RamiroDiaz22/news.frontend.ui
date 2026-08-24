@@ -1,0 +1,53 @@
+# 🚀 Guía de Onboarding Frontend: Diario Digital (Para Juniors)
+
+¡Bienvenido al proyecto **Diario Digital**! Esta guía está diseñada para ayudarte a dar tus primeros pasos en el Frontend. Nuestro objetivo no es que programes toda la plataforma mañana, sino que construyas una base sólida. 
+
+Para lograrlo, te proponemos un camino de autoaprendizaje. Antes de escribir código, te invitamos a investigar y responder las siguientes preguntas. ¡Aprender a buscar información oficial es la habilidad número uno de un desarrollador!
+
+---
+
+## 🛤️ Fase 1: Los Cimientos (React & TypeScript)
+
+Antes de ver cómo está armado nuestro proyecto, necesitas entender las piezas de lego que usamos.
+
+### ❓ Preguntas para investigar:
+1. **React Básico:** ¿Qué es un "Componente" en React? ¿Cuál es la diferencia entre *Estado* (`useState`) y *Propiedades* (`props`)?
+2. **Ciclo de vida:** ¿Para qué sirve el hook `useEffect` y por qué hay que tener cuidado con su "array de dependencias"?
+3. **TypeScript:** En este proyecto está estrictamente prohibido usar el tipo `any`. ¿Por qué usamos TypeScript en lugar de JavaScript puro? ¿Qué es una `interface` y cómo se usa para definir las `props` de un componente?
+4. **Mobile-First:** Nuestro diseño en Paper exige pensar primero en móviles. ¿Qué significa el concepto *Mobile-First* en CSS y cómo se relaciona con los *Media Queries*?
+
+---
+
+## 🏗️ Fase 2: Entendiendo nuestra Arquitectura
+
+Una vez que entiendas React, debes entender cómo organizamos los archivos en Diario Digital.
+
+### ❓ Preguntas para investigar:
+1. **Vite y pnpm:** Usamos `pnpm dev` para arrancar el proyecto. ¿Qué es Vite y qué diferencia tiene con Create React App o Webpack? 
+2. **React Router (Layouts):** Revisa nuestra carpeta `src/layouts/`. ¿Qué es un `<Outlet />` en React Router v7 y cómo nos ayuda a no repetir el Menú de Navegación (Header/Sidebar) en cada página?
+3. **Ant Design (antd):** No escribimos todo el CSS desde cero. ¿Qué es una librería de componentes? ¿Cómo importarías un simple `Button` o un `Input` de Ant Design leyendo su documentación oficial?
+4. **Lucide React:** Usamos esta librería para íconos. ¿Cómo se renderiza un ícono de Lucide pasándole propiedades de tamaño o color?
+
+---
+
+## 📡 Fase 3: Conexión y Datos (Avanzado)
+
+Cuando domines la creación de interfaces visuales, el siguiente paso es conectarlas con el Backend.
+
+### ❓ Preguntas para investigar:
+1. **Promesas y Axios:** ¿Qué es una función asíncrona (`async / await`)? ¿Cómo harías una petición `GET` HTTP usando Axios?
+2. **Server State (TanStack Query):** En vez de guardar los datos de la API en un clásico `useState`, nosotros usamos React Query. Investiga qué es `useQuery`. ¿Qué ventajas nos da tener variables mágicas como `isLoading` o `isError` ya resueltas por la librería?
+3. **Client State (Zustand):** Revisa la carpeta `src/stores/`. ¿Qué es la "perforación de propiedades" (*prop drilling*) en React y cómo Zustand nos ayuda a tener un estado global (como saber si el usuario está logueado) accesible desde cualquier componente?
+
+---
+
+## 🎯 Plan de Acción: Tus Primeros Pasos Prácticos
+
+Para no abrumarte, no empezarás haciendo una página entera ni conectando bases de datos. Este será tu plan de vuelo inicial:
+
+1. **Paso 1 - El Componente Aislado:** Tu primera tarea será crear un componente muy pequeño y "tonto" (sin lógica compleja). Por ejemplo: construir la **Tarjeta de Noticia (`NewsCard`)**. Solo recibirá `props` estáticas (título, imagen, resumen) y usará componentes de Ant Design.
+2. **Paso 2 - El Layout Estático:** Luego, construirás el **Header Público**, utilizando Flexbox para alinear el logo y los íconos de Lucide.
+3. **Paso 3 - La Vista Estática:** Después juntaremos todo: crearás la página **Home** insertando varias de tus tarjetas (creadas en el paso 1) en una grilla simulada.
+4. **Paso 4 - La Lógica:** Finalmente, cuando todo se vea perfecto en la pantalla, te enseñaremos a conectar esa página Home con React Query para que las noticias de tus tarjetas provengan del backend real que estamos desarrollando.
+
+> 💡 **Consejo de oro:** Por el momento, **evita usar Inteligencia Artificial** para que te escriba las respuestas a estas preguntas o te genere el código. Lee la documentación oficial (por ejemplo, `react.dev`), busca tutoriales básicos y escribe el código con tus propias manos equivocándote cuantas veces sea necesario. ¡Las bases sólidas te harán un profesional increíble a largo plazo!
